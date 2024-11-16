@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Histórico de Análises</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Histórico de Análises</h2>
+        </div>
+        <div class="card-content">
+			<form method="get" th:action="@{/analyses}">
+			                <label for="size">Itens por página:</label>
+			                <select name="size" id="size" onchange="this.form.submit()">
+			                    <option th:value="5" th:selected="${analysesPage.size == 5}">5</option>
+			                    <option th:value="10" th:selected="${analysesPage.size == 10}">10</option>
+			                    <option th:value="20" th:selected="${analysesPage.size == 20}">20</option>
+			                </select>
+			                <input type="hidden" name="page" th:value="${analysesPage.number}" />
+			            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Consumo Total</th>
+                        <th>Horas de Sol</th>
+                        <th>Resultado</th>
+                        <th>Eletrodomésticos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="analysis : ${analysesPage.content}">
+                        <td th:text="${analysis.id}"></td>
+                        <td th:text="${#temporals.format(analysis.createdAt, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${analysis.totalConsumption} + ' kWh'"></td>
+                        <td th:text="${analysis.sunlightHours} + ' h'"></td>
+                        <td th:text="${analysis.result}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="appliance : ${analysis.appliancesData}">
+                                    <span th:text="${appliance.applianceName} + ' - ' + ${appliance.powerConsumption} + ' W'"></span>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+			
+			<div class="pagination">
+			                <a th:href="@{/analyses(page=${analysesPage.number - 1}, size=${analysesPage.size})}" th:if="${!analysesPage.first}">Anterior</a>
+			                <span>Página <span th:text="${analysesPage.number + 1}"></span> de <span th:text="${analysesPage.totalPages}"></span></span>
+			                <a th:href="@{/analyses(page=${analysesPage.number + 1}, size=${analysesPage.size})}" th:if="${!analysesPage.last}">Próxima</a>
+			            </div>
+        </div>
+    </div>
+</body>
+</html>

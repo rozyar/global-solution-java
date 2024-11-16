@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Calcular Painéis Solares</title>
+</head>
+<body>
+<div class="container">
+    <h2>Cálculo de Painéis Solares</h2>
+    <p>Consumo Diário Total de Energia: <strong th:text="${totalConsumption}"></strong> kWh</p>
+    <p><strong>Resultado:</strong></p>
+    <p th:text="${result}"></p>
+    <a th:href="@{/appliances}">Voltar aos Eletrodomésticos</a>
+</div>
+</body>
+</html>

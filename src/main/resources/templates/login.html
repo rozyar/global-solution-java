@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Calculadora de Painéis Solares</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Login</h2>
+            </div>
+            <div class="card-content">
+                <div th:if="${error}" class="error-message">
+                    <p th:text="${error}"></p>
+                </div>
+                <div th:if="${success}" class="success-message">
+                    <p th:text="${success}"></p>
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="username" required/>
+                    </div>
+                    <div>
+                        <label>Senha:</label>
+                        <input type="password" name="password" required/>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="remember-me" id="remember-me"/>
+                        <label for="remember-me">Lembrar-me</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="button">Entrar</button>
+                    </div>
+                </form>
+                <p>Não tem uma conta? <a th:href="@{/register}" style="color: #FFC107;">Registrar</a></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Calculadora de Painéis Solares
+    </footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Editar Eletrodoméstico</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Editar Eletrodoméstico</h2>
+        </div>
+        <div class="card-content">
+            <form th:action="@{/appliance/update}" th:object="${appliance}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <div>
+                    <label>Nome do Eletrodoméstico:</label>
+                    <input type="text" th:field="*{applianceName}" required/>
+                    <div th:if="${#fields.hasErrors('applianceName')}" class="error-message" th:errors="*{applianceName}"></div>
+                </div>
+                <div>
+                    <label>Consumo (Watts):</label>
+                    <input type="number" th:field="*{powerConsumption}" step="0.01" required/>
+                    <div th:if="${#fields.hasErrors('powerConsumption')}" class="error-message" th:errors="*{powerConsumption}"></div>
+                </div>
+                <div>
+                    <button type="submit" class="button">Atualizar Eletrodoméstico</button>
+                </div>
+            </form>
+            <a class="button button-outline" th:href="@{/appliances}">Voltar para a lista de Eletrodomésticos</a>
+        </div>
+    </div>
+</body>
+</html>

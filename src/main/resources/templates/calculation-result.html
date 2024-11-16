@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Resultado do Cálculo</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Resultado do Cálculo</h2>
+        </div>
+        <div class="card-content">
+            <p>Consumo Diário Total de Energia: <strong th:text="${totalConsumption} + ' kWh'"></strong></p>
+            <p>Horas de Sol por Dia: <strong th:text="${sunlightHours} + ' horas'"></strong></p>
+            <p><strong>Resultado:</strong></p>
+            <p th:text="${result}"></p>
+
+            <h3>Eletrodomésticos Utilizados:</h3>
+            <ul>
+                <li th:each="appliance : ${appliances}">
+                    <span th:text="${appliance.applianceName} + ' - ' + ${appliance.powerConsumption} + ' W'"></span>
+                </li>
+            </ul>
+
+            <div class="button-group">
+                <a class="button" th:href="@{/calculate}">Fazer um novo cálculo</a>
+                <a class="button" th:href="@{/analyses}">Ver histórico de análises</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

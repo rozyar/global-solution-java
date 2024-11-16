@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (content)">
+<head>
+    <title>Calculadora de Painéis Solares</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="avatar"></div>
+            <div class="user-info">
+                <h2 th:text="${#authentication.name}">Usuário</h2>
+                <p>Bem-vindo(a)</p>
+            </div>
+        </div>
+        <button class="menu-button" onclick="toggleMenu()">&#9776;</button>
+    </header>
+    <div class="side-menu" id="side-menu">
+        <nav>
+            <a th:href="@{/home}" class="menu-item">
+                <span class="icon">🏠</span>
+                Home
+            </a>
+            <a th:href="@{/appliances}" class="menu-item">
+                <span class="icon">🔌</span>
+                Eletrodomésticos
+            </a>
+            <a th:href="@{/calculate}" class="menu-item">
+                <span class="icon">🧮</span>
+                Calcular Painéis
+            </a>
+            <a th:href="@{/analyses}" class="menu-item">
+                <span class="icon">📊</span>
+                Histórico de Análises
+            </a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button class="logout-button">
+                    <span class="icon">🚪</span>
+                    Logout
+                </button>
+            </form>
+        </nav>
+    </div>
+    <main class="main-content">
+        <div th:insert="${content}"></div>
+    </main>
+    <footer>
+        &copy; 2024 Calculadora de Painéis Solares
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('side-menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

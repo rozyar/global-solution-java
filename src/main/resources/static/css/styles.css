@@ -1,0 +1,363 @@
+/* Geral */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #001f2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: #00131b;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left .avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #20c997;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.header-left .user-info h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.header-left .user-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #20c997;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #00131b;
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 64px;
+}
+
+.side-menu .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.side-menu .menu-item:hover {
+    background-color: #002b3b;
+}
+
+.side-menu .menu-item .icon {
+    margin-right: 8px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.card {
+    background-color: #002b3b;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.card-header {
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    padding: 8px 16px;
+    background-color: #20c997;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: #17a2b8;
+}
+
+.button-outline {
+    background-color: transparent;
+    border: 1px solid #20c997;
+    color: #20c997;
+}
+
+.button-outline:hover {
+    background-color: #20c997;
+    color: white;
+}
+
+.button-secondary {
+    background-color: #6c757d;
+}
+
+.button-secondary:hover {
+    background-color: #5a6268;
+}
+
+.button-sm {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #001f2b;
+    border: 1px solid #20c997;
+    border-radius: 4px;
+    color: white;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #6c757d;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #17a2b8;
+}
+
+label {
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+table thead th {
+    background-color: #00131b;
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+    text-align: left;
+}
+
+table tbody td {
+    padding: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid #002b3b;
+}
+
+table tbody tr:hover {
+    background-color: #002b3b;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+}
+
+.success-message {
+    color: #28a745;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.warning-message {
+    color: #ffc107;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #00131b;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.form-container {
+    width: 35%; 
+    margin: auto; 
+    padding: 16px; 
+    background-color: #002b3b; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    min-height: 50%; 
+}
+
+.form-container h2 {
+    margin-bottom: 16px; 
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: #001f2b;
+    border: 1px solid #20c997;
+    border-radius: 4px;
+    color: white;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+	margin-bottom: 16px;
+    background-color: #20c997;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #17a2b8;
+}
+
+
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    width: 100%;
+    text-align: left;
+}
+
+.logout-button:hover {
+    background-color: #002b3b;
+}
+
+form {
+    margin-bottom: 16px;
+}
+
+form label {
+    margin-right: 8px;
+}
+
+form select {
+    padding: 4px 8px;
+    background-color: #001f2b;
+    color: white;
+    border: 1px solid #20c997;
+    border-radius: 4px;
+}
+
+form select:focus {
+    outline: none;
+    border-color: #17a2b8;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+	margin-bottom: 20px;
+}
+
+.pagination a, .pagination span {
+    margin: 0 8px;
+    color: #20c997;
+    text-decoration: none;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    background-color: #00131b;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #002b3b;
+}
+

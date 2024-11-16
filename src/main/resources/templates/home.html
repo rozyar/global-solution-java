@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Bem-vindo(a) à Calculadora de Painéis Solares</h2>
+        </div>
+        <div class="card-content">
+            <p>Calcule quantos painéis solares você precisa para suprir o consumo de energia da sua casa.</p>
+            <div class="button-group">
+                <a class="button" th:href="@{/appliances}">Gerenciar Eletrodomésticos</a>
+                <a class="button" th:href="@{/calculate}">Calcular Painéis Solares</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

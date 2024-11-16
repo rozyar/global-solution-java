@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Calcular Painéis Solares</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Cálculo de Painéis Solares</h2>
+        </div>
+        <div class="card-content">
+            <p>Informe quantas horas por dia o painel solar receberá sol (máximo de 24 horas):</p>
+            <form th:action="@{/calculate}" th:object="${analysis}" method="post">
+                <div>
+                    <label>Horas de Sol por Dia:</label>
+                    <input type="number" th:field="*{sunlightHours}" min="0" max="24" placeholder="Ex: 5"/>
+                    <div th:if="${#fields.hasErrors('sunlightHours')}" class="error-message" th:errors="*{sunlightHours}"></div>
+                </div>
+                <div>
+                    <button type="submit" class="button">Calcular</button>
+                </div>
+            </form>
+            <div th:if="${warning}" class="warning-message">
+                <p th:text="${warning}"></p>
+            </div>
+            <div th:if="${error}" class="error-message">
+                <p th:text="${error}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

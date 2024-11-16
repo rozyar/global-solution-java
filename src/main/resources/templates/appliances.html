@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::body})}">
+<head>
+    <title>Eletrodomésticos</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Seus Eletrodomésticos</h2>
+        </div>
+        <div class="card-content">
+            <form th:action="@{/appliances}" th:object="${appliance}" method="post">
+                <div>
+                    <label>Nome do Eletrodoméstico:</label>
+                    <input type="text" th:field="*{applianceName}" placeholder="Ex: Geladeira" required/>
+                    <div th:if="${#fields.hasErrors('applianceName')}" class="error-message" th:errors="*{applianceName}"></div>
+                </div>
+                <div>
+                    <label>Consumo (Watts):</label>
+                    <input type="number" th:field="*{powerConsumption}" step="0.01" placeholder="Ex: 150" required/>
+                    <div th:if="${#fields.hasErrors('powerConsumption')}" class="error-message" th:errors="*{powerConsumption}"></div>
+                </div>
+                <div>
+                    <button type="submit" class="button">Adicionar Eletrodoméstico</button>
+                </div>
+            </form>
+            <h3>Lista de Eletrodomésticos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Consumo (Watts)</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+				<tbody>
+				    <tr th:each="appliance : ${appliancesPage.content}">
+				        <td th:text="${appliance.applianceName}"></td>
+				        <td th:text="${appliance.powerConsumption}"></td>
+				        <td>
+				            <a class="button button-sm button-outline" th:href="@{/appliance/edit/{id}(id=${appliance.id})}">Editar</a>
+				            <a class="button button-sm button-outline" th:href="@{/appliance/delete/{id}(id=${appliance.id})}">Excluir</a>
+				        </td>
+				    </tr>
+				</tbody>
+            </table>
+			<div class="pagination">
+			                <a th:href="@{/appliances(page=${appliancesPage.number - 1}, size=${appliancesPage.size})}" th:if="${!appliancesPage.first}">Anterior</a>
+			                <span>Página <span th:text="${appliancesPage.number + 1}"></span> de <span th:text="${appliancesPage.totalPages}"></span></span>
+			                <a th:href="@{/appliances(page=${appliancesPage.number + 1}, size=${appliancesPage.size})}" th:if="${!appliancesPage.last}">Próxima</a>
+			            </div>
+            <a class="button" th:href="@{/calculate}">Calcular Painéis Solares Necessários</a>
+        </div>
+    </div>
+</body>
+</html>

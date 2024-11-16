@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar - Calculadora de Painéis Solares</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Registrar</h2>
+            </div>
+            <div class="card-content">
+                <form th:action="@{/register}" th:object="${user}" method="post">
+                    <div>
+                        <label>Nome:</label>
+                        <input type="text" th:field="*{name}" required/>
+                        <div th:if="${#fields.hasErrors('name')}" class="error-message" th:errors="*{name}"></div>
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" th:field="*{email}" required/>
+                        <div th:if="${#fields.hasErrors('email')}" class="error-message" th:errors="*{email}"></div>
+                    </div>
+                    <div>
+                        <label>Senha:</label>
+                        <input type="password" th:field="*{password}" required/>
+                        <div th:if="${#fields.hasErrors('password')}" class="error-message" th:errors="*{password}"></div>
+                    </div>
+                    <div>
+                        <label>Confirmar Senha:</label>
+                        <input type="password" th:field="*{confirmPassword}" required/>
+                        <div th:if="${error}" class="error-message" th:text="${error}"></div>
+                    </div>
+                    <div>
+                        <button type="submit" class="button">Registrar</button>
+                    </div>
+                </form>
+                <p>Já tem uma conta? <a th:href="@{/login}" style="color: #FFC107;">Entrar</a></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Calculadora de Painéis Solares
+    </footer>
+</body>
+</html>
