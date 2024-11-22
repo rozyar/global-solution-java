@@ -14,9 +14,9 @@ public class AIService {
 
     private final OpenAiService openAiService;
 
-    public AIService(@Value("OpenIA API-KEY") String apiKey) {
+    public AIService(@Value("${openai.api.key}") String apiKey) {
         this.openAiService = new OpenAiService(apiKey);
-    }
+    } 
 
     public String calculateSolarPanels(double totalConsumption, int sunlightHours) {
         String prompt = "Dada uma demanda diária total de energia de " + totalConsumption + " kWh, " +
